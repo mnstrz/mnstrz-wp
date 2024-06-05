@@ -9,9 +9,4 @@ class Controller
 		extract($data);
 		require_once __DIR__."/../views/$filename.php";
 	}
-
-	public static function css($path)
-	{
-		
-	}
 }
