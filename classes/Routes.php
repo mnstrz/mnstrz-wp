@@ -61,36 +61,41 @@ class Routes
 	    flush_rewrite_rules();
 	}
 
-	public function addMenu($menu_name='',$title='',$icon='',$order=null)
+	public function add_menu_page($page_title='',$menu_title='',$capability='manage_options',$menu_slug='',$icon_url ='',$callback=null,$position=null)
 	{
-		$title = (!$title) ? $this->title : $title;
-		$menu_name = (!$menu_name) ? $this->path : $menu_name;
+		$page_title = (!$page_title) ? $this->title : $page_title;
+		$menu_title = (!$menu_title) ? $this->title : $menu_title;
+		$menu_slug = (!$menu_slug) ? $this->path : $menu_slug;
+		$callback = (!$callback) ? [$this->class,$this->function] : $callback;
+
 		add_menu_page(
-			$menu_name,
-			$title,
-			'manage_options',
-			$this->path,
-			[$this->class,$this->function],
-			$icon,
-			$order
+			$page_title,
+			$menu_title,
+			$capability,
+			$menu_slug,
+			$callback,
+			$icon_url,
+			$position
 		);
 		return $this;
 	}
 
-	public function addSubmenu($parent='',$menu_name='',$title='',$icon='',$order=null)
+	public function add_submenu_page($parent='',$page_title='',$menu_title='',$capability='manage_options',$menu_slug='',$icon_url ='',$callback=null,$position=null)
 	{
-		$title = (!$title) ? $this->title : $title;
-		$menu_name = (!$menu_name) ? $this->path : $menu_name;
+		$page_title = (!$page_title) ? $this->title : $page_title;
+		$menu_title = (!$menu_title) ? $this->title : $menu_title;
+		$menu_slug = (!$menu_slug) ? $this->path : $menu_slug;
+		$callback = (!$callback) ? [$this->class,$this->function] : $callback;
 
 		add_submenu_page(
 			$parent,
-			$menu_name,
-			$title,
-			'manage_options',
-			$this->path,
-			[$this->class,$this->function],
-			$icon,
-			$order
+			$page_title,
+			$menu_title,
+			$capability,
+			$menu_slug,
+			$callback,
+			$icon_url,
+			$position
 		);
 		return $this;
 	}
