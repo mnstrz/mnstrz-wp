@@ -12,7 +12,7 @@ This is wordpress plugin structure to easy build wordpress plugin
 1. Clone this repository into `wp-content/plugins` 
 2. Rename folder name `mnstrz-wp` to whatever you want
 3. Rename file `mnstrz-wp.php` to same with your folder
-4. Change the namespace `mnstrz\\` with your plugin namespace (please dont use `-`)
+4. Change the namespace `mnstrz\\` with your plugin namespace on `mnstrz-wp.php` (please dont use `-`)
 5. Replace all `mnstrz` string to your plugin name
     - `classes\Controller`
     - `classess\Db`
