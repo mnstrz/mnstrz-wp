@@ -1,0 +1,1 @@
+<h1>Hello <?php echo $name ?>, what an amazing day!</h1>

@@ -41,8 +41,8 @@ class Routes
 
 	protected function addRoutes()
 	{
-		add_action('init',[$this,'add_endpoint']);
-		add_filter('query_vars',[$this,'add_query_vars'],0);
+		add_action('wp_loaded',[$this,'add_endpoint']);
+		add_filter('query_vars',[$this,'add_query_vars']);
 		add_action('template_redirect',[$this->class,$this->function]);
 		add_action('after_switch_theme',[$this,'add_flush_rewrite_rules']);
 	}
@@ -51,7 +51,7 @@ class Routes
 		add_rewrite_rule('^'.$this->path.'/?$', 'index.php?'.$this->path.'=true', 'top');
 	}
 
-	public function add_query_vars() {
+	public function add_query_vars($vars) {
 		$vars[] = $this->path;
 		return $vars;
 	}
