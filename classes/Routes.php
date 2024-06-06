@@ -61,7 +61,7 @@ class Routes
 	    flush_rewrite_rules();
 	}
 
-	public function add_menu_page($page_title='',$menu_title='',$capability='manage_options',$menu_slug='',$icon_url ='',$callback=null,$position=999)
+	public function add_menu_page($page_title='',$menu_title='',$capability='manage_options',$menu_slug='',$callback=null,$icon_url ='',$position=999)
 	{
 		$page_title = (!$page_title) ? $this->title : $page_title;
 		$menu_title = (!$menu_title) ? $this->title : $menu_title;
