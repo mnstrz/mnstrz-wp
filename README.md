@@ -6,6 +6,9 @@ This is wordpress plugin structure to easy build wordpress plugin
 - Controllers
 - View
 - Database
+- API
+- Ajax
+- Provider
 
 ## How to use
 
@@ -19,6 +22,9 @@ This is wordpress plugin structure to easy build wordpress plugin
     - `classess\Main`
     - `classess\Routes`
     - `database\Database`
+    - `ext\Api`
+    - `ext\Ajax`
+    - `ext\Provider`
     - `routes\web.php`
 6. I have make an example controller on `controllers\TestHomepage` so just make the same one if you are need
 7. I also make an example route on `routes\web.php` so just make same script

@@ -26,9 +26,12 @@ class Main
 		$this->version = $plugin_data['Version'];
 		$this->cache = $this->version;
 
+		$this->provider();
 		$this->controllers();
 		$this->routes();
 		$this->database();
+		$this->ajax();
+		$this->api();
 		$this->styles();
 		$this->scripts();
 	}
@@ -67,5 +70,23 @@ class Main
 		wp_register_script($this->name."-scripts", plugin_dir_url( __DIR__ ).'assets/js/scripts.js',array('jquery'),$this->cache);
 		wp_localize_script($this->name."-scripts",'myAjax',array('ajaxurl' => admin_url('admin-ajax.php')));
 		wp_enqueue_script($this->name."-scripts");
+	}
+
+	protected function provider()
+	{
+		$api = new \mnstrz\ext\Provider();
+		$api->init();
+	}
+
+	protected function ajax()
+	{
+		$ajax = new \mnstrz\ext\Ajax();
+		$ajax->init();
+	}
+
+	protected function api()
+	{
+		$api = new \mnstrz\ext\Api();
+		$api->init();
 	}
 }

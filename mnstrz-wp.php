@@ -13,7 +13,8 @@
 $namespace = [
 	'mnstrz\\app' => 'classes',
 	'mnstrz\\controllers' => 'controllers',
-	'mnstrz\\database' => 'database'
+	'mnstrz\\database' => 'database',
+	'mnstrz\\ext' => 'ext'
 ];
 
 spl_autoload_register(function ($class) use($namespace) {
