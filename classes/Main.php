@@ -4,7 +4,7 @@ namespace mnstrz\app;
 
 class Main
 {
-	public $name, $version;
+	public $name, $version, $cache;
 
 	public function __construct($name)
 	{
@@ -24,6 +24,7 @@ class Main
 	{
 		$plugin_data = get_plugin_data(  __DIR__ .'/../'.$this->name.".php");
 		$this->version = $plugin_data['Version'];
+		$this->cache = $this->version;
 
 		$this->controllers();
 		$this->routes();
@@ -58,12 +59,12 @@ class Main
 
 	protected function styles()
 	{
-		wp_enqueue_style($this->name."-style",plugin_dir_url( __DIR__ ). 'assets/css/style.css',[],$this->version);
+		wp_enqueue_style($this->name."-style",plugin_dir_url( __DIR__ ). 'assets/css/style.css',[],$this->cache);
 	}
 
 	protected function scripts()
 	{
-		wp_register_script($this->name."-scripts", plugin_dir_url( __DIR__ ).'assets/js/scripts.js',array('jquery'),$this->version);
+		wp_register_script($this->name."-scripts", plugin_dir_url( __DIR__ ).'assets/js/scripts.js',array('jquery'),$this->cache);
 		wp_localize_script($this->name."-scripts",'myAjax',array('ajaxurl' => admin_url('admin-ajax.php')));
 		wp_enqueue_script($this->name."-scripts");
 	}
