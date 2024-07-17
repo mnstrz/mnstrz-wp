@@ -12,7 +12,20 @@ class Controller
 
 	public static function request($param = null,$null_return = null){
         if ($param){
-            $value = (!empty($_POST[$param]) ? trim(esc_sql($_POST[$param])) : (!empty($_GET[$param]) ? trim(esc_sql($_GET[$param])) : $null_return ));
+            $value = null;
+            if(!empty($_POST[$param]))
+            {
+                if(!is_array($_POST[$param]))
+                {
+                    $value = (!empty($_POST[$param]) ? trim(esc_sql($_POST[$param])) : (!empty($_GET[$param]) ? trim(esc_sql($_GET[$param])) : $null_return ));
+                }else{
+                    $value = [];
+                    foreach($_POST[$param]??[] as $param_array_key => $param_array_value)
+                    {
+                        $value[trim(esc_sql($param_array_key))] = trim(esc_sql($param_array_value));
+                    }
+                }
+            }
             return $value;
         } else {
             $params = array();
