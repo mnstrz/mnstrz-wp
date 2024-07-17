@@ -14,8 +14,11 @@ class Main
 	public function init()
 	{
 		$name = $this->name;
-		add_action('init',function()
+		add_action('plugins_loaded',function()
 		{
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+			    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$this->init_setting();
 		});
 	}
